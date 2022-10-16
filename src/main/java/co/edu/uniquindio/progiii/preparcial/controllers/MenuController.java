@@ -7,11 +7,15 @@ public class MenuController {
 
     @FXML
     private void AbrirEstudiantesView() {
+
         Application.AbrirEstudiantesView();
+
     }
 
     @FXML
     private void AbrirProgramasView() {
+
         Application.AbrirProgramasView();
+        
     }
 }

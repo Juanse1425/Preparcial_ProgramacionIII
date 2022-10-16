@@ -20,13 +20,14 @@ public class ModelFactoryController {
 
         if (Persistencia.cargarRecursoUniversidadXML() == null) {
 
-            System.out.println("es null");
             guardarResourceXML();
             cargarResourceXML();
 
         }else{
+
             cargarResourceXML();
             guardarResourceXML();
+
         }
 
     }
@@ -52,7 +53,7 @@ public class ModelFactoryController {
             Persistencia.cargarDatosArchivos(getUniversidad());
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
 
         }
@@ -117,7 +118,9 @@ public class ModelFactoryController {
     public void guardarEstudianteArchivo(Estudiante estudiante) throws IOException {
 
         universidad.getEstudiantes().add(estudiante);
+
         Persistencia.guardarEstudiantes(universidad.getEstudiantes());
+
         Persistencia.guardarRecursoUniversidadXML(universidad);
 
     }
@@ -125,7 +128,9 @@ public class ModelFactoryController {
     public void guardarProgramaArchivo(Programa programa) throws IOException {
 
         universidad.getProgramas().add(programa);
+
         Persistencia.guardarProgramas(universidad.getProgramas());
+
         Persistencia.guardarRecursoUniversidadXML(universidad);
 
     }
@@ -157,6 +162,7 @@ public class ModelFactoryController {
     public ArrayList<String> cargarModalidades() throws IOException {
 
         ArrayList<String> modalidades = Persistencia.cargarModalidadesProperties();
+
         return modalidades;
 
     }

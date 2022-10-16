@@ -30,12 +30,13 @@ public class Persistencia {
 
     public static void cargarDatosArchivos(Universidad universidad) throws FileNotFoundException, IOException {
 
-
-        //cargar archivo de estudiantes
         ArrayList<Estudiante> estudiantesCargados = cargarEstudiantes();
 
-        if (estudiantesCargados.size() > 0)
+        if (estudiantesCargados.size() > 0) {
+
             universidad.getEstudiantes().addAll(estudiantesCargados);
+
+        }
 
     }
 
@@ -46,28 +47,39 @@ public class Persistencia {
      * @throws FileNotFoundException
      * @throws IOException
      */
+
     public static ArrayList<Estudiante> cargarEstudiantes() throws FileNotFoundException, IOException {
+
         ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 
         ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_ESTUDIANTES);
+
         String linea = "";
 
         for (int i = 0; i < contenido.size(); i++) {
+
             linea = contenido.get(i);
+
             Estudiante estudiante = new Estudiante();
+
             estudiante.setNombre(linea.split(",")[0]);
             estudiante.setCodigo(linea.split(",")[1]);
             estudiante.setNota1(Double.valueOf(linea.split(",")[2]));
             estudiante.setNota2(Double.valueOf(linea.split(",")[3]));
             estudiante.setNota3(Double.valueOf(linea.split(",")[4]));
+
             estudiantes.add(estudiante);
+
         }
+
         return estudiantes;
+
     }
 
     public static ArrayList<String> cargarModalidadesProperties() throws IOException {
 
         ArrayList<String> modalidades = ArchivoUtil.leerProperties(RUTA_ARCHIVO_PROPERTIES_MODALIDADES);
+
         return modalidades;
 
     }
@@ -80,14 +92,18 @@ public class Persistencia {
      * @param listaEstudiantes
      * @throws IOException
      */
+
     public static void guardarEstudiantes(ArrayList<Estudiante> listaEstudiantes) throws IOException {
-        // TODO Auto-generated method stub
+
         String contenido = "";
 
         for (Estudiante estudiante : listaEstudiantes) {
+
             contenido += estudiante.getNombre() + "," + estudiante.getCodigo() + "," + estudiante.getNota1() + "," + estudiante.getNota2()
                     + "," + estudiante.getNota3() + "\n";
+
         }
+
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_ESTUDIANTES, contenido, false);
 
     }
@@ -98,15 +114,19 @@ public class Persistencia {
      * @param listaProgramas
      * @throws IOException
      */
+
     public static void guardarProgramas(ArrayList<Programa> listaProgramas) throws IOException {
 
-        // TODO Auto-generated method stub
         String contenido = "";
 
         for (Programa programa : listaProgramas) {
+
             contenido += programa.getNombre() + "," + programa.getCodigo() + "," + programa.getModalidad() + "\n";
+
         }
+
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_PROGRAMAS, contenido, false);
+
     }
 
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {
@@ -121,22 +141,31 @@ public class Persistencia {
         Universidad universidad = null;
 
         try {
+
             universidad = (Universidad) ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_UNIVERSIDAD_BINARIO);
+
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
+
         }
+
         return universidad;
+
     }
 
     public static void guardarRecursoUniversidadBinario(Universidad universidad) {
 
         try {
+
             ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_UNIVERSIDAD_BINARIO, universidad);
+
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
+
         }
+
     }
 
     public static Universidad cargarRecursoUniversidadXML() {
@@ -144,11 +173,15 @@ public class Persistencia {
         Universidad universidad = null;
 
         try {
+
             universidad = (Universidad) ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_UNIVERSIDAD_XML);
+
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
+
         }
+
         return universidad;
 
     }
@@ -156,11 +189,15 @@ public class Persistencia {
     public static void guardarRecursoUniversidadXML(Universidad universidad) {
 
         try {
+
             ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_UNIVERSIDAD_XML, universidad);
+
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
+
         }
+
     }
 
 }

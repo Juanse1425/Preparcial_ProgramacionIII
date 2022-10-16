@@ -41,11 +41,11 @@ public class Universidad implements Serializable {
 
         Estudiante estudiante = new Estudiante();
 
-        estudiante.nombre.set(nombre);
-        estudiante.codigo.set(codigo);
-        estudiante.nota1.set(nota1);
-        estudiante.nota2.set(nota2);
-        estudiante.nota3.set(nota3);
+        estudiante.setNombre(nombre);
+        estudiante.setCodigo(codigo);
+        estudiante.setNota1(nota1);
+        estudiante.setNota2(nota2);
+        estudiante.setNota3(nota3);
 
         return estudiante;
 
@@ -53,12 +53,11 @@ public class Universidad implements Serializable {
 
     public Programa crearPrograma(String nombre, String codigo, String modalidad) {
 
-
         Programa programa = new Programa();
 
-        programa.nombre.set(nombre);
-        programa.codigo.set(codigo);
-        programa.modalidad.set(modalidad);
+        programa.setNombre(nombre);
+        programa.setCodigo(codigo);
+        programa.setModalidad(modalidad);
 
         return programa;
 
