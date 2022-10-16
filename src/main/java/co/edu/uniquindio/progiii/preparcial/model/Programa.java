@@ -14,35 +14,12 @@ public class Programa implements Serializable {
         return nombre.get();
     }
 
-    public SimpleStringProperty nombreProperty() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre.set(nombre);
-    }
-
     public String getCodigo() {
         return codigo.get();
-    }
-
-    public SimpleStringProperty codigoProperty() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo.set(codigo);
     }
 
     public String getModalidad() {
         return modalidad.get();
     }
 
-    public SimpleStringProperty modalidadProperty() {
-        return modalidad;
-    }
-
-    public void setModalidad(String modalidad) {
-        this.modalidad.set(modalidad);
-    }
 }
