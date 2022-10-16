@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="200.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.progiii.preparcial.controllers.MenuController">
+    <children>
+        <Label layoutX="76.0" layoutY="14.0" text="Universidad">
+            <font>
+                <Font name="Berlin Sans FB" size="24.0"/>
+            </font>
+        </Label>
+        <Button fx:id="btnEstudiantes" layoutX="31.0" layoutY="99.0" mnemonicParsing="false"
+                onAction="#AbrirEstudiantesView" text="Estudiantes">
+            <font>
+                <Font name="Berlin Sans FB" size="15.0"/>
+            </font>
+        </Button>
+        <Button fx:id="btnProgramas" layoutX="150.0" layoutY="99.0" mnemonicParsing="false"
+                onAction="#AbrirProgramasView" text="Programas">
+            <font>
+                <Font name="Berlin Sans FB" size="15.0"/>
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
