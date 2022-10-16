@@ -37,13 +37,6 @@ public class Persistencia {
         if (estudiantesCargados.size() > 0)
             universidad.getEstudiantes().addAll(estudiantesCargados);
 
-
-        //cargar archivos de programas
-        ArrayList<Programa> programasCargados = cargarProgramas();
-
-        if (programasCargados.size() > 0)
-            universidad.getProgramas().addAll(programasCargados);
-
     }
 
 //	----------------------LOADS------------------------
@@ -72,27 +65,11 @@ public class Persistencia {
         return estudiantes;
     }
 
-    /**
-     * @return un Arraylist de programas con los datos obtenidos del archivo de texto indicado
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    private static ArrayList<Programa> cargarProgramas() throws IOException {
+    public static ArrayList<String> cargarModalidadesProperties() throws IOException {
 
-        ArrayList<Programa> programas = new ArrayList<Programa>();
+        ArrayList<String> modalidades = ArchivoUtil.leerProperties(RUTA_ARCHIVO_PROPERTIES_MODALIDADES);
+        return modalidades;
 
-        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_PROGRAMAS);
-        String linea = "";
-
-        for (int i = 0; i < contenido.size(); i++) {
-            linea = contenido.get(i);
-            Programa programa = new Programa();
-            programa.setNombre(linea.split(",")[0]);
-            programa.setCodigo(linea.split(",")[1]);
-            programa.setModalidad(linea.split(",")[2]);
-            programas.add(programa);
-        }
-        return programas;
     }
 
 //	----------------------SAVES------------------------
@@ -186,10 +163,4 @@ public class Persistencia {
         }
     }
 
-    public static ArrayList<String> cargarModalidadesProperties() throws IOException {
-
-        ArrayList<String> modalidades = ArchivoUtil.leerProperties(RUTA_ARCHIVO_PROPERTIES_MODALIDADES);
-        return modalidades;
-
-    }
 }

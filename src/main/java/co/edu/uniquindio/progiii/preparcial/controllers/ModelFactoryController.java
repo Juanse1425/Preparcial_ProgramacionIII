@@ -17,14 +17,16 @@ public class ModelFactoryController {
     private ModelFactoryController() {
 
         cargarDatosDesdeArchivos();
-        guardarResourceXML();
-        cargarResourceXML();
 
-        if (universidad == null) {
+        if (Persistencia.cargarRecursoUniversidadXML() == null) {
 
             System.out.println("es null");
             guardarResourceXML();
+            cargarResourceXML();
 
+        }else{
+            cargarResourceXML();
+            guardarResourceXML();
         }
 
     }
